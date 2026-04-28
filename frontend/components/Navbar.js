@@ -40,7 +40,7 @@ export default function Navbar() {
         >
           <div className="w-10 h-10 rounded-full overflow-hidden border border-pink-500 flex items-center justify-center">
             <Image
-              src="/logo.png"
+              src="/Logo.png"
               alt="SheShield Logo"
               width={40}
               height={40}
