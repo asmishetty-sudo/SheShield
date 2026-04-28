@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+.leaflet-container {
+  z-index: 0 !important;
+}
+
+.leaflet-pane,
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 0 !important;
+}
