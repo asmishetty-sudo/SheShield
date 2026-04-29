@@ -14,7 +14,9 @@ status: {
   enum: ["active", "accepted", "resolved", "escalated"],
   default: "active",
 },
-
+guestId: {
+  type: String,
+},
 acceptedAt: {
   type: Date,
 },
