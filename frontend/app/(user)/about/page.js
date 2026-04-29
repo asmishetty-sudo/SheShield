@@ -38,7 +38,7 @@ export default function page() {
           <div className="flex items-center justify-center">
             <div className="w-36 h-36 rounded-full overflow-hidden border-4 border-pink-500 flex items-center justify-center">
                         <Image
-                          src="/logo.png"
+                          src="/Logo.png"
                           alt="SheShield Logo"
                           width={144}
                           height={144}
