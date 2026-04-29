@@ -223,9 +223,10 @@ exports.triggerGuestSOS = async (req, res) => {
     if (!guestId) {
       return res.status(400).json({ message: "Guest ID required" });
     }
-    if (!global.guestSOSMap) global.guestSOSMap = new Map();
-    const existing = global.guestSOSMap.get(guestId);
-
+    const existing = await SOS.findOne({
+  guestId,
+   status: { $in: ["active", "accepted", "escalated"] },
+});
     // BLOCK if active
     if (existing && existing.status === "active") {
       return res.status(400).json({
@@ -235,12 +236,14 @@ exports.triggerGuestSOS = async (req, res) => {
     }
 
     //cooldown
-    if (existing && Date.now() - existing.last < 60000) {
-      return res.status(400).json({
-        success: false,
-        message: "Wait before sending another SOS",
-      });
-    }
+const lastSOS = await SOS.findOne({ guestId }).sort({ createdAt: -1 });
+
+if (lastSOS && Date.now() - new Date(lastSOS.createdAt) < 60000) {
+  return res.status(400).json({
+    success: false,
+    message: "Wait before sending another SOS",
+  });
+}
 
     //find volunteers
     const volunteers = await User.find({
@@ -259,17 +262,11 @@ exports.triggerGuestSOS = async (req, res) => {
     const sos = await SOS.create({
       userId: null,
       isGuest: true,
+       guestId: guestId,
       location: {
         type: "Point",
         coordinates: [location.lng, location.lat],
       },
-    });
-
-    // store guest SOS
-    global.guestSOSMap.set(guestId, {
-      sosId: sos._id,
-      status: "active",
-      last: Date.now(),
     });
 
     // emit
@@ -423,21 +420,18 @@ exports.getGuestActiveSOS = async (req, res) => {
     if (!guestId) {
       return res.status(400).json({ message: "Guest ID required" });
     }
-    if (!global.guestSOSMap) global.guestSOSMap = new Map();
-    const guestData = global.guestSOSMap.get(guestId);
+    const sos = await SOS.findOne({
+  guestId,
+  status: { $in: ["active", "accepted", "escalated"] },
+}).populate({
+  path: "acceptedBy",
+  select: "name profilePic econtact",
+});
 
-    if (!guestData || guestData.status !== "active") {
-      return res.json({ success: true, sos: null });
-    }
-
-    const sos = await SOS.findById(guestData.sosId).populate({
-      path: "acceptedBy",
-      select: "name profilePic econtact",
-    });
-
-    if (!sos || sos.status !== "active") {
-      return res.json({ success: true, sos: null });
-    }
+if (!sos) {
+  return res.json({ success: true, sos: null });
+}
+    
 
     const formatted = {
       sosId: sos._id,
