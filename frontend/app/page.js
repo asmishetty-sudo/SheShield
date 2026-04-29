@@ -18,6 +18,7 @@ import {
   CheckCircle,
   LogIn,
   Hourglass,
+  Siren, Radio,ShieldCheck ,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -444,8 +445,8 @@ export default function Home() {
             {/*PENDING */}
             {user && user.userType === "volunteer_pending" && (
               <div className="bg-yellow-50 border border-yellow-300 rounded-xl p-5 text-center">
-                <h2 className="text-lg font-semibold text-yellow-700">
-                  <Hourglass className="w-6 h-6 text-gray-500" /> Under Review
+                <h2 className="text-lg flex justify-center items-center font-semibold text-yellow-700">
+                  <Hourglass className="w-6 h-6 text-gray-500" /> <p> Under Review</p>
                 </h2>
                 <p className="text-gray-600 mt-1">
                   Your application is being verified.
@@ -543,55 +544,55 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {/* STEP 1 */}
               <div className="bg-pink-500 text-white rounded-2xl p-5 shadow-lg">
-                <div className="text-3xl mb-3">🚨</div>
-                <span className="text-xs bg-white/20 px-2 py-1 rounded">
-                  One tap activation
-                </span>
-                <h3 className="text-lg font-bold mt-3">SOS Activation</h3>
-                <p className="text-sm mt-2 opacity-90">
-                  Instantly trigger an emergency alert using the SOS button.
-                  Your location is captured immediately.
-                </p>
-              </div>
+    <Siren className="w-8 h-8 mb-3" />
+    <span className="text-xs bg-white/20 px-2 py-1 rounded">
+      One tap activation
+    </span>
+    <h3 className="text-lg font-bold mt-3">SOS Activation</h3>
+    <p className="text-sm mt-2 opacity-90">
+      Instantly trigger an emergency alert using the SOS button.
+      Your location is captured immediately.
+    </p>
+  </div>
 
               {/* STEP 2 */}
               <div className="bg-purple-600 text-white rounded-2xl p-5 shadow-lg">
-                <div className="text-3xl mb-3">📡</div>
-                <span className="text-xs bg-white/20 px-2 py-1 rounded">
-                  Live tracking
-                </span>
-                <h3 className="text-lg font-bold mt-3">Real-Time Monitoring</h3>
-                <p className="text-sm mt-2 opacity-90">
-                  Your live location and activity are shared with trusted
-                  contacts for instant awareness.
-                </p>
-              </div>
+    <Radio className="w-8 h-8 mb-3" />
+    <span className="text-xs bg-white/20 px-2 py-1 rounded">
+      Live tracking
+    </span>
+    <h3 className="text-lg font-bold mt-3">Real-Time Monitoring</h3>
+    <p className="text-sm mt-2 opacity-90">
+      Your live location and activity are shared with trusted
+      contacts for instant awareness.
+    </p>
+  </div>
 
               {/* STEP 3 */}
-              <div className="bg-gray-600 text-white rounded-2xl p-5 shadow-lg">
-                <div className="text-3xl mb-3">⚡</div>
-                <span className="text-xs bg-white/20 px-2 py-1 rounded">
-                  Seconds, not minutes
-                </span>
-                <h3 className="text-lg font-bold mt-3">Rapid Response</h3>
-                <p className="text-sm mt-2 opacity-90">
-                  Nearby volunteers and responders are alerted instantly with
-                  precise location data.
-                </p>
-              </div>
+ <div className="bg-gray-600 text-white rounded-2xl p-5 shadow-lg">
+    <Zap className="w-8 h-8 mb-3" />
+    <span className="text-xs bg-white/20 px-2 py-1 rounded">
+      Seconds, not minutes
+    </span>
+    <h3 className="text-lg font-bold mt-3">Rapid Response</h3>
+    <p className="text-sm mt-2 opacity-90">
+      Nearby volunteers and responders are alerted instantly with
+      precise location data.
+    </p>
+  </div>
 
               {/* STEP 4 */}
               <div className="bg-indigo-600 text-white rounded-2xl p-5 shadow-lg">
-                <div className="text-3xl mb-3">🛡️</div>
-                <span className="text-xs bg-white/20 px-2 py-1 rounded">
-                  Auto recording
-                </span>
-                <h3 className="text-lg font-bold mt-3">Complete Protection</h3>
-                <p className="text-sm mt-2 opacity-90">
-                  All events are logged securely, ensuring evidence and
-                  accountability during emergencies.
-                </p>
-              </div>
+    <ShieldCheck className="w-8 h-8 mb-3" />
+    <span className="text-xs bg-white/20 px-2 py-1 rounded">
+      Auto recording
+    </span>
+    <h3 className="text-lg font-bold mt-3">Complete Protection</h3>
+    <p className="text-sm mt-2 opacity-90">
+      All events are logged securely, ensuring evidence and
+      accountability during emergencies.
+    </p>
+  </div>
             </div>
           </div>
         </div>
