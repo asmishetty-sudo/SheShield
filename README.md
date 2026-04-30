@@ -1,7 +1,3 @@
-Here’s your **clean, professional README without emojis**:
-
----
-
 # SheShield – Real-Time Personal Safety Platform
 
 **SheShield** is a full-stack web application designed to enhance personal safety through instant SOS alerts, live location tracking, and community-driven emergency response.
@@ -162,7 +158,11 @@ npm run dev
 * Offline SOS support (SMS fallback)
 
 ---
+## Demo
+- Live Demo: [asmi](https://she-shield-zeta.vercel.app/)
+- Demo Video: [demo video](https://youtu.be/U6oMOUTUaR8)
 
+---
 ## Author
 
 Asmi M Shetty
