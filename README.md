@@ -159,8 +159,8 @@ npm run dev
 
 ---
 ## Demo
-- Live Demo: [asmi](https://she-shield-zeta.vercel.app/)
-- Demo Video: [demo video](https://youtu.be/U6oMOUTUaR8)
+- [Live Demo](https://she-shield-zeta.vercel.app/)
+- [Demo Video](https://youtu.be/U6oMOUTUaR8)
 
 ---
 ## Author
